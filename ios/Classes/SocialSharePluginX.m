@@ -1,4 +1,4 @@
-#import "SocialSharePlugin.h"
+#import "SocialSharePluginX.h"
 #if __has_include(<social_share_plugin/social_share_plugin-Swift.h>)
 #import <social_share_plugin/social_share_plugin-Swift.h>
 #else
@@ -8,7 +8,7 @@
 #import "social_share_plugin-Swift.h"
 #endif
 
-@implementation SocialSharePlugin
+@implementation SocialSharePluginX
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftSocialSharePlugin registerWithRegistrar:registrar];
 }
