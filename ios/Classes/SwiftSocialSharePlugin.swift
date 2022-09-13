@@ -37,7 +37,7 @@ public class SwiftSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
     }
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "social_share_plugin", binaryMessenger: registrar.messenger())
+        let channel = FlutterMethodChannel(name: "social_share_plugin_x", binaryMessenger: registrar.messenger())
         let instance = SwiftSocialSharePlugin(fromChannel: channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
