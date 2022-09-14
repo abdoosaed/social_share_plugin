@@ -9,11 +9,7 @@ void main() {
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      print(methodCall.arguments['path']);
-      return <String, dynamic>{
-        'caption': 'caption',
-        'path': 'path',
-      };
+      return '42';
     });
   });
 
@@ -22,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-  await SocialSharePlugin.shareToFeedFacebook(path: 'path');
+    expect(await SocialSharePlugin.platformVersion, '42');
   });
 }

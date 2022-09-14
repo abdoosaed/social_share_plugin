@@ -137,7 +137,7 @@ class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
   private fun instagramShare(type: String?, imagePath: String?) {
     val image = File(imagePath!!)
     val uri = FlutterSocialXPluginFileProvider.getUriForFile(
-      activity!!, activity!!.packageName + ".social.share.fileprovider",
+      activity!!, activity!!.packageName + ".social.share.x.fileprovider",
       image
     )
     val share = Intent(Intent.ACTION_SEND)
@@ -160,7 +160,7 @@ class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
   private fun facebookShare(caption: String?, mediaPath: String?) {
     val media = File(mediaPath!!)
     val uri = FlutterSocialXPluginFileProvider.getUriForFile(
-      activity!!, activity!!.packageName + ".social.share.fileprovider",
+      activity!!, activity!!.packageName + ".social.share.x.fileprovider",
       media
     )
     val photo: SharePhoto = SharePhoto.Builder().setImageUrl(uri).setCaption(caption).build()
