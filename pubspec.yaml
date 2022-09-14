@@ -31,7 +31,7 @@ flutter:
         package: com.cygnati.social_share_plugin
         pluginClass: SocialSharePlugin
       ios:
-        pluginClass: SocialSharePlugin
+        pluginClass: SocialSharePluginX
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

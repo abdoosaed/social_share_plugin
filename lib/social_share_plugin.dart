@@ -6,7 +6,7 @@ typedef Future<void> OnErrorHandler(String error);
 typedef Future<void> OnSuccessHandler(String postId);
 
 class SocialSharePlugin {
-  static const MethodChannel _channel = const MethodChannel('social_share_plugin');
+  static const MethodChannel _channel = const MethodChannel('social_share_plugin_x');
 
   static Future<String?> get platformVersion async {
     final String? version = await _channel.invokeMethod('getPlatformVersion');

@@ -35,7 +35,7 @@ class SocialSharePlugin : FlutterPlugin, ActivityAware, MethodCallHandler,
   private var channel: MethodChannel? = null
   private val callbackManager: CallbackManager = CallbackManager.Factory.create()
   override fun onAttachedToEngine(binding: FlutterPluginBinding) {
-    channel = MethodChannel(binding.binaryMessenger, "social_share_plugin")
+    channel = MethodChannel(binding.binaryMessenger, "social_share_plugin_x")
     channel!!.setMethodCallHandler(this)
   }
 
