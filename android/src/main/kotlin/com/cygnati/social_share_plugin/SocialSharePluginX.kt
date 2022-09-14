@@ -1,4 +1,4 @@
-package com.cygnati.social_share_plugin
+package com.cygnati.social_share_plugin_x
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -29,7 +29,7 @@ import java.io.File
 /**
  * SocialSharePlugin
  */
-class SocialSharePlugin : FlutterPlugin, ActivityAware, MethodCallHandler,
+class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
   ActivityResultListener {
   private var activity: Activity? = null
   private var channel: MethodChannel? = null
