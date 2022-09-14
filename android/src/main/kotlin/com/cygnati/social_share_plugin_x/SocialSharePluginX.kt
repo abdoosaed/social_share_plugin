@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.util.Log
-import androidx.core.content.FileProvider
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -137,7 +136,7 @@ class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
 
   private fun instagramShare(type: String?, imagePath: String?) {
     val image = File(imagePath!!)
-    val uri = FileProvider.getUriForFile(
+    val uri = FlutterSocialXPluginFileProvider.getUriForFile(
       activity!!, activity!!.packageName + ".social.share.fileprovider",
       image
     )
@@ -160,7 +159,7 @@ class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
 
   private fun facebookShare(caption: String?, mediaPath: String?) {
     val media = File(mediaPath!!)
-    val uri = FileProvider.getUriForFile(
+    val uri = FlutterSocialXPluginFileProvider.getUriForFile(
       activity!!, activity!!.packageName + ".social.share.fileprovider",
       media
     )

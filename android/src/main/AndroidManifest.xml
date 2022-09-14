@@ -1,3 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.cygnati.social_share_plugin_x">
+xmlns:tools="http://schemas.android.com/tools"
+package="com.cygnati.social_share_plugin_x">
+
+<application>
+    <provider
+        android:name="com.cygnati.social_share_plugin_x.FlutterSocialXPluginFileProvider"
+        android:authorities="${applicationId}.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true"
+        tools:replace="android:authorities">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/filepaths" />
+    </provider>
+</application>
 </manifest>
