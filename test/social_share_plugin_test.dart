@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:social_share_plugin/social_share_plugin.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('social_share_plugin');
+  const MethodChannel channel = MethodChannel('social_share_plugin_x');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
