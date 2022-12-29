@@ -106,7 +106,7 @@ public class SwiftSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
                 let fbURL = URL(string: "fbapi://")
                 if let fbURL = fbURL {
                     if UIApplication.shared.canOpenURL(fbURL) {
-                        facebookShare(path)
+                        facebookShare(path, hashtag: hashtag)
 //                        result(nil)
                     } else {
                         let fbLink = "itms-apps://itunes.apple.com/us/app/apple-store/id284882215"
@@ -217,9 +217,7 @@ public class SwiftSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
             let photo = SharePhoto(image: image, isUserGenerated: true)
             let content = SharePhotoContent()
             content.photos = [photo]
-            if hashtag != nil {
-                content.hashtag = Hashtag(hashtag)
-            }
+            content.hashtag = Hashtag(hashtag ?? "")
             let controller = UIApplication.shared.delegate?.window??.rootViewController
             ShareDialog.show(viewController: controller, content: content, delegate: self)
         }
