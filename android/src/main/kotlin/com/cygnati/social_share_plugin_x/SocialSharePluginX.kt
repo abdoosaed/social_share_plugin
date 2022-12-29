@@ -11,6 +11,7 @@ import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.share.Sharer
+import com.facebook.share.model.ShareHashtag
 import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.model.SharePhoto
 import com.facebook.share.model.SharePhotoContent
@@ -24,6 +25,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.PluginRegistry.ActivityResultListener
 import java.io.File
+
 
 /**
  * SocialSharePlugin
@@ -96,7 +98,7 @@ class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
       }
       "shareToFeedFacebook" -> try {
         pm.getPackageInfo(FACEBOOK_PACKAGE_NAME, PackageManager.GET_ACTIVITIES)
-        facebookShare(call.argument("caption"), call.argument("path"))
+        facebookShare(call.argument("caption"), call.argument("path"), call.argument("hashtag"))
         result.success(true)
       } catch (e: PackageManager.NameNotFoundException) {
         openPlayStore(FACEBOOK_PACKAGE_NAME)
@@ -158,7 +160,7 @@ class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
     activity!!.startActivityForResult(chooser, INSTAGRAM_REQUEST_CODE)
   }
 
-  private fun facebookShare(caption: String?, mediaPath: String?) {
+  private fun facebookShare(caption: String?, mediaPath: String?, hashtag: String?) {
     val media = File(mediaPath!!)
       val uri = FlutterSocialXPluginFileProvider.getUriForFile(
           activity!!,
@@ -166,7 +168,10 @@ class SocialSharePluginX : FlutterPlugin, ActivityAware, MethodCallHandler,
           media
       )
     val photo: SharePhoto = SharePhoto.Builder().setImageUrl(uri).setCaption(caption).build()
-    val content: SharePhotoContent = SharePhotoContent.Builder().addPhoto(photo).build()
+    val content: SharePhotoContent = SharePhotoContent.Builder()
+            .addPhoto(photo)
+            .setShareHashtag(ShareHashtag.Builder().setHashtag(hashtag).build())
+            .build()
     val shareDialog = ShareDialog(activity)
     shareDialog.registerCallback(callbackManager, object : FacebookCallback<Sharer.Result?> {
       override fun onSuccess(result: Sharer.Result?) {

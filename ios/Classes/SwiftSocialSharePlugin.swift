@@ -100,7 +100,8 @@ public class SwiftSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
                 break
             }
             if let myArgs = args as? [String: Any],
-               let path = myArgs["path"] as? String
+               let path = myArgs["path"] as? String,
+               let hashtag = myArgs["hashtag"] as? String
             {
                 let fbURL = URL(string: "fbapi://")
                 if let fbURL = fbURL {
@@ -210,12 +211,15 @@ public class SwiftSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
         }
     }
 
-    func facebookShare(_ imagePath: String?) {
+    func facebookShare(_ imagePath: String?, hashtag: String?) {
         // NSURL* path = [[NSURL alloc] initWithString:call.arguments[@"path"]];
         if let image = UIImage(contentsOfFile: imagePath ?? "") {
             let photo = SharePhoto(image: image, isUserGenerated: true)
             let content = SharePhotoContent()
             content.photos = [photo]
+            if hashtag != nil {
+                content.hashtag = Hashtag(hashtag)
+            }
             let controller = UIApplication.shared.delegate?.window??.rootViewController
             ShareDialog.show(viewController: controller, content: content, delegate: self)
         }

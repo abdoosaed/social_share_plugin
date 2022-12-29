@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 
-typedef Future<void>OnCancelHandler();
+typedef Future<void> OnCancelHandler();
 typedef Future<void> OnErrorHandler(String error);
 typedef Future<void> OnSuccessHandler(String postId);
 
 class SocialSharePlugin {
-  static const MethodChannel _channel = const MethodChannel('social_share_plugin_x');
+  static const MethodChannel _channel =
+      const MethodChannel('social_share_plugin_x');
 
   static Future<String?> get platformVersion async {
     final String? version = await _channel.invokeMethod('getPlatformVersion');
@@ -37,6 +38,7 @@ class SocialSharePlugin {
 
   static Future<void> shareToFeedFacebook({
     String? caption,
+    String? hashtag,
     required String path,
     OnSuccessHandler? onSuccess,
     OnCancelHandler? onCancel,
@@ -57,6 +59,7 @@ class SocialSharePlugin {
     return _channel.invokeMethod('shareToFeedFacebook', <String, dynamic>{
       'caption': caption,
       'path': path,
+      'hashtag': hashtag,
     });
   }
 
