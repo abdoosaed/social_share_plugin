@@ -16,8 +16,10 @@ Social Share to Facebook and Intagram Flutter plugin.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
 
-  s.dependency 'FBSDKCoreKit', '~> 14.1.0'
-  s.dependency 'FBSDKShareKit', '~> 14.1.0'
+  # Do not specify PATCH version of FBSDKCoreKit. See README file for explanation
+  # https://github.com/oddbit/flutter_facebook_app_events#dependencies-on-facebook-sdk
+  s.dependency 'FBSDKCoreKit', '~> 15.1'
+  s.dependency 'FBSDKShareKit', '~> 15.1'
 
   s.platform = :ios, '11.0'
 
